@@ -1,0 +1,8 @@
+# run "uscan --report" to check
+# Only "most notable" releases tagged upstream: See README.source
+version=4
+opts="dversionmangle=s/~dfsg\d*$//, \
+ uversionmangle=s/^(\d{4})-(\d{2})-(\d{2}).*/$1$2$3/, \
+ filenamemangle=s%(?:.*?/)?v?(@ANY_VERSION@@ARCHIVE_EXT@)%@PACKAGE@-$1%" \
+ https://github.com/googlei18n/noto-fonts/tags \
+ (?:.*?/)?v?@ANY_VERSION@@ARCHIVE_EXT@

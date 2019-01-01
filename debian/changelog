@@ -1,0 +1,382 @@
+fonts-noto (20181227-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+
+  [ Jonas Smedegaard ]
+  * Declare compliance with Debian Policy 4.3.0.
+  * Install korean FAQ.
+  * Drop Files sections for fonts licensed Apache-2.0:
+    Now licensed SIL-1.1 as the rest.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 01 Jan 2019 19:03:14 +0100
+
+fonts-noto (20181130-2~exp1) experimental; urgency=medium
+
+  * Sort debhelper install hints.
+  * Rename package fonts-noto-hinted → fonts-noto-core,
+    keeping fonts-noto-hinted as obsolete metapackage for now.
+  * Add new binary packages
+    fonts-noto-ui-core fonts-noto-extra fonts-noto-ui-extra.
+    Avoid UI families in udeb packages.
+  * Stop count unhinted fonts.
+  * Warn during build about upstream shipped fonts not packaged.
+  * Include Noto Serif Gujarati in main udeb package.
+    See bug#911705, #915825. Thanks to Holger Wansing.
+  * Use unhinted fonts in main udeb packages.
+  * Have fonts-noto recommend fonts-noto-cjk-extra.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 09 Dec 2018 06:19:40 +0100
+
+fonts-noto (20181130-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+
+  [ Jonas Smedegaard ]
+  * Update package relations:
+    + Have metapackage fonts-noto recommend fonts-noto-color-emoji.
+    + Tighten fonts-noto-hinted break+replace fonts-noto-unhinted:
+      Hinting now included with all previously shipped Noto families.
+    + Drop fonts-noto-unhinted break+replace fonts-noto-hinted.
+  * Update copyright info:
+    + Extend coverage for main upstream author.
+    + Add Files section for Monotype fonts, licensed Apache-2.0.
+    + Fix name of main upstream author.
+    + Extend coverage of packaging.
+  * Extend lintian overrides regarding License-Reference.
+  * Split udeb packages by what debian-installer needs
+    (i.e. include all except Sinhala in fonts-noto-unhinted-udeb).
+  * Declare compliance with Debian Policy 4.2.1.
+  * Set Rules-Requires-Root: no.
+  * Update Vcs-* fields: Packaging moved to Salsa.
+  * Wrap and sort control file and debhelper snippets.
+  * Revive Noto Sans, dropped upstream since 2018-01-11.
+  * Fix count scripts in all shipped fonts
+    (not source-provided unhinted fonts).
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 04 Dec 2018 15:58:27 +0100
+
+fonts-noto (20171026-2) unstable; urgency=medium
+
+  * Fix break+replace correct packages.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 29 Oct 2017 21:23:21 +0100
+
+fonts-noto (20171026-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+
+  [ Jonas Smedegaard ]
+  * Update git-buildpackage config: Disable use of pristine-tar.
+  * Simplify rules: Stop resolve build-dependencies in rules file.
+  * Modernize Vcs-* fields: Consistently use git (not cgit) in path.
+  * Declare compliance with Debian Policy 4.1.1.
+  * Update watch file: Use substitution strings.
+  * Simplify rules:
+    + Do copyright-check in maintainer script (not during build).
+      Stop build-depend on licensecheck libregexp-assemble-perl
+      libimage-exiftool-perl libfont-ttf-perl.
+      Relax to build-depend unversioned on cdbs.
+  * Drop obsolete lintian override regarding debhelper 9.
+  * Tighten lintian overrides regarding License-Reference.
+  * Stop build-depend on dh-buildinfo.
+  * Update copyright info:
+    + Extend coverage for main upstream author.
+    + Extend coverage for myself.
+    + Use https protocol in file format URL.
+  * Resolve font info late.
+  * Install NEWS.md.
+  * Provide only main font variants Regular Bold Italic BoldItalic
+    (extra variants provided later in separate binary package).
+  * Have fonts-noto-unhinted break+replace older fonts-noto-hinted:
+    Hinting no longer included with Noto Sans family Cham.
+  * Have fonts-noto-hinted break+replace older fonts-noto-unhinted:
+    Hinting now included with Noto Sans families Avestan Bamum Buhid
+    Carian Cherokee Cypriot Deseret Glagolitic Gothic KayahLi Lisu
+    Mandaic N'Ko OlChiki OldTurkic Osmanya Shavian Symbols Tifinagh Vai.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 29 Oct 2017 17:56:36 +0100
+
+fonts-noto (20161116-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+    + New build and some new sources.
+    + Added Symbols2 OTF and TTF files.
+    + Update FAQ.md.
+    + Results of the build(s) from 30/Sep/2016 and 1-2/Oct/2016
+    + Cleanup of files that were not meant to be released.
+    + Bump post table version in Lao fonts to 3.0.
+    + Compiled with the most recent pipeline which includes
+      interpolation. Missing all *Myanmar* fonts, because they have
+      source problems.
+    + Cleaning up (removing) old fonts, using old naming conventions.
+
+  [ Jonas Smedegaard ]
+  * Shrink udeb package fonts-noto-hinted-udeb to contain only Sinhala
+    fonts for now (see bug#837926).
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 18 Nov 2016 11:24:01 +0100
+
+fonts-noto (20160724-3) unstable; urgency=medium
+
+  * Fix revert to compute font lists also for metapackage.
+    Closes: Bug#838265. Thanks to Beatrice Torracca.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 19 Sep 2016 13:00:48 +0200
+
+fonts-noto (20160724-2) unstable; urgency=medium
+
+  * Stop unset executable bits (incomplete, and concrete issues fixed
+    upstream).
+  * Fix stop bogusly compute font lists for metapackage.
+  * Provide udeb packages fonts-noto-hinted fonts-noto-unhinted.
+    Closes: Bug#837923. Thanks to Harshula.
+  * Update copyright info:
+    + Fix extend coverage for main upstream author.
+  * Improve copyright check:
+    + Extract TrueType and OpenType fonts using exiftool (only TrueType
+      containers using Font::TTF).
+    + Build-depend on licensecheck (not devscripts).
+    + Tighten build-dependency on cdbs.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Fri, 16 Sep 2016 16:28:11 +0200
+
+fonts-noto (20160724-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+    + Update NotoSansJavanese to v1.06.
+    + Fix OTS bad max_zones warnings in Cham and Lao fonts.
+    + Update Gurmukhi hinted/unhinted to v1.03.
+    + Improve FAQ formatting.
+    + Update README.md.
+    + Removed spurious bullet item.
+    + Bring FAQ back to Markdown syntax.
+    + Use linkable section headers.
+    + Update Symbols to v1.09.
+    + Update Syriac fonts to v 1.04.
+    + Swap glyphs for U+03C6 (phi) and U+03D5 (phi1) in NotoSerif.
+    + Hot fix for #510: Primes need to be angled.
+    + Use asterisks instead of underscore in markdown.
+    + Added to alpha/from-pipeline fonts which were created from glyphs
+      files.
+    + Update all fonts for the run about midnight PDT on 2016-03-31 (and
+      2016-04-01).
+    + Fix year.
+    + Update serif Bengali (h/uh) to v1.01.
+    + Update Serif Malayalam (h/uh) to v1.01.
+    + Update Serif Tamil (h/uh) to v1.01.
+    + Update Serif Kannada (h/uh) to v1.01.
+    + Update Serif Telugu (h/uh) to v1.01.
+    + Add Serif Devanagari (h/uh) v1.01.
+    + Update Serif Gujarati (h/uh) to v1.02.
+
+  [ Jonas Smedegaard ]
+  * Temporarily skip license-check of some fonts which license-miner
+    mysteriously choke on.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 31 Jul 2016 19:39:05 +0200
+
+fonts-noto (20160116-3) unstable; urgency=medium
+
+  * Make package reproducible.
+    Closes: bug#833005, Thanks to Chris Lamb.
+  * Fix the captilization error in debian/control.
+
+ -- Vasudev Kamath <vasudev@copyninja.info>  Sun, 31 Jul 2016 16:18:57 +0530
+
+fonts-noto (20160116-2) unstable; urgency=low
+
+  [ Jonas Smedegaard ]
+  * Update Homepage.
+  * Update watch file:
+    + Fix opts quoting.
+    + Fix uversionmangle regex.
+    + Fix matching regex.
+    + Bump to file format 4.
+    + Add usage comment.
+    + Use substitution variables.
+  * Modernize copyright-check CDBS hints.
+    Drop license-miner (included with cdbs now).
+    Tighten build-dependency on cdbs.
+
+  [ Vasudev Kamath ]
+  * Fix typo in Vcs-Git URL.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 19 Jun 2016 10:19:33 +0200
+
+fonts-noto (20160116-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "releases".
+    + Update TaiTham to v1.04.
+    + Add NotoSerifMalayalam hinted and unhinted v1.00.
+    + Add Serif Telugu hinted and unhinted v1.00.
+    + Add Serif Tamil hinted and unhinted v1.00.
+    + Add Serif Kannada hinted and unhinted v1.00.
+    + Add Serif Gujarati hinted and unhinted v1.00.
+    + Add Serif Bengali hinted and unhinted v1.00.
+    + Update README.md with note on superseding Droid.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 25 Jan 2016 11:21:36 +0530
+
+fonts-noto (20151217-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "release(s)".
+    + Update Javanese to v1.05.
+    + Add NotoMono-Regular v1.00 (nee DroidSansMono).
+    + Update Symbols to v1.07.
+
+  [ Jonas Smedegaard ]
+  * Add package fonts-noto-mono.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 29 Dec 2015 23:43:18 +0530
+
+fonts-noto (20151210-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New "release" (apparently every upstream commit is a release).
+
+  [ Jonas Smedegaard ]
+  * Stop repackage upstream source tarball: No longer (since 20151210)
+    includes non-free ICC profile.
+  * Update README-source to simplify fetching source slightly.
+  * Throw error when commit hash missing in get-orig-source target.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sat, 12 Dec 2015 19:17:06 +0545
+
+fonts-noto (20151116~dfsg-1) unstable; urgency=medium
+
+  * Fix have metapackage fonts-noto depend on ${misc:Depends}.
+  * Strip dashes from version: Debian Policy §3.2.1.
+  * Move binary package fonts-noto to section metapackages.
+  * Fix have fonts-noto-hinted replace older fonts-noto-unhinted: Font
+    Noto Sans Tibetan moved.
+    Closes: Bug#805843. Thanks to Adam Borowski.
+  * Repackage upstream tarball to exclude image with embedded non-DFSG
+    ICC data.
+  * Add README.source documenting use of CDBS and git-buildpackage, and
+    use of time-based releases.
+  * Mangle upstream version in watch file, and add comment referring to
+    README.source regarding time-based releases.
+  * Extract copyright hints of images (not only fonts) with local script
+    license-miner.
+  * Update copyright info:
+    + Relicense upstream code as SIL-1.1.
+  * Fix exclude CJK from script coverage count in long descriptions.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 23 Nov 2015 10:44:14 +0100
+
+fonts-noto (2015-09-29-1) unstable; urgency=medium
+
+  * [ upstream ]
+    New release: Last release with fonts under the Apache 2.0 license.
+    Some highlights of changes:
+    + Noto CJK moved to separate project.
+    + Add hinted font Noto Sans Tibetan Bold.
+    + Add unhinted font Noto Nastaliq Urdu.
+
+  [ Jonas Smedegaard ]
+  * Fix resolve script count for metapackage.
+    Thanks to Kess Vargavind.
+  * Bump debhelper compatibility level to 9.
+  * Add lintian override regarding debhelper 9.
+  * Update copyright info:
+    + Use License-Grant and License-Reference fields.
+      Thanks to Ben Finney.
+    + Fix use only URL in source paragraph.
+    + Add alternate git source URL.
+  * Add lintian override regarding license in License-Reference field.
+    See bug#786450.
+  * Include upstream README and FAQ.
+
+  [ Vasudev Kamath ]
+  * Update upstream URLs for homepage, source and preferred contact:
+    Upstream project moved to Github.
+  * Drop binary package fonts-noto-cjk: Now separate upstream project.
+  * Upate my email address in Uploader field.
+  * Use https url in Vcs-Git field.
+  * Add binary package fonts-croscore: Now part of this upstream
+    project.
+    + Add maintscript to handle removal of all conffiles.
+    Closes: bug#785099, Thanks to Jonas Smedegaard and Fabian Greffrath.
+  * Add bug-presubj and bug-script files for fonts-noto variants.
+  * Add fontconfig hint mapping Droid fonts to Noto.
+    Thanks to Fabian Greffrath.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 22 Nov 2015 18:11:19 +0100
+
+fonts-noto (2015-05-11+cjk-1) unstable; urgency=medium
+
+  [ upstream ]
+  * Snapshot of (same) recent changes, including unhinted and CJK fonts.
+
+  [ Jonas Smedegaard ]
+  * Update copyright info:
+    + Update comment on how tarball was created.
+    + Cover Noto Sans CJK fonts: Licensed as SIL-1.1.
+  * Fix script count used in long description to exclude language
+    variance and other noise.
+  * Generalize and improve metadata extraction by use of script
+    license-miner.
+  * Update package relations:
+    Build-depend on libregexp-assemble-perl libimage-exiftool-perl
+    libfont-ttf-perl: Needed by license-miner.
+  * Reorganize packaging:
+    + Add package fonts-noto-hinted (with previous content)
+    + Add packages fonts-noto-unhinted and fonts-noto-cjk.
+    + Have fonts-noto be a metapackage depending on fonts-noto-hinted
+      and recommending fonts-noto-unhinted and fonts-noto-cjk.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 13 May 2015 18:28:01 +0200
+
+fonts-noto (2015-05-11-1) unstable; urgency=medium
+
+  [ upstream ]
+  * Snapshot of recent changes.
+
+  [ Jonas Smedegaard ]
+  * Mention in long description the unicode name and codepoint (not
+    description on possible representation) of character nicknamed Tofu.
+  * Declare compliance with Debian Policy 3.9.6.
+  * Update copyright info:
+    + Extend coverage for upstream author to include recent years.
+    + Adapt source field to explicitly indicate git clone.
+    + Add comment on how tarball was created from git clone.
+    + Extend coverage for myself.
+  * Update Vcs-Browser field: Use cgit URL.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Tue, 12 May 2015 14:40:03 +0200
+
+fonts-noto (2014-08-03-1) unstable; urgency=medium
+
+  [ Vasudev Kamath ]
+  * Imported Upstream version 2014-08-03
+    + This import is from upstream git snapshot at sha hash is e517fb8.
+  * Upstream no longer provides a valid download point. Comment out watch
+    line.
+
+ -- Vasudev Kamath <kamathvasudev@gmail.com>  Sat, 09 Aug 2014 21:04:05 +0530
+
+fonts-noto (2013-04-11-2) unstable; urgency=medium
+
+  * Adjust long description:
+    + Fix grammar (script amount is plural).
+    + Slightly refine note on tofu character.
+  * Fix use lowercase font dir (for consistency across font packages).
+    Closes: bug#737716. Thanks to Fabian Greffrath.
+  * Add git-buildpackage config, enabling pristine-tar and sighed tags.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Wed, 05 Feb 2014 13:51:58 +0100
+
+fonts-noto (2013-04-11-1) unstable; urgency=low
+
+  [ Vasudev Kamath & Jonas Smedegaard ]
+  * Initial Release.
+    Closes: bug#712422.
+
+ -- Jonas Smedegaard <dr@jones.dk>  Mon, 03 Feb 2014 12:34:39 +0100

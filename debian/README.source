@@ -1,0 +1,16 @@
+Getting new upstream release
+----------------------------
+
+Upstream only tags "most notable releases" as releases with inconsistent
+tag naming: <https://github.com/googlei18n/noto-fonts/releases>.
+
+Package releases are therefore time-based, linked to upstream git hash.
+
+Example:
+
+        debian/rules get-orig-source DEB_UPSTREAM_VERSION=20151116 DEB_UPSTREAM_TARBALL_BASENAME=8958d71
+
+        gbp import-orig --upstream-vcs-tag=8958d71 ../tarballs/fonts-noto_20151116.orig.tar.gz
+
+
+ -- Jonas Smedegaard <dr@jones.dk>  Sun, 19 Jun 2016 10:20:56 +0200
